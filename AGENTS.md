@@ -22,17 +22,33 @@
 - E4：外部逆向研究，例如《驾驭工程：从 Claude Code 源码到 AI 编码最佳实践》。只用于比较和启发，不作为 DSH 实现事实的唯一证据。
 - E5：研究者推断。必须显式标记“推断”，不能写成实现事实。
 
+## 专家指导工作流
+
+收到真实研发或故障问题时，不先输出架构建议。按以下顺序处理：
+
+1. 锁定 version / commit / OS / Node / profile / preset / entry path。
+2. 从用户症状进入 `diagnostics/`，再定位 subsystem；不要把用户猜测的根因当事实。
+3. 搜索 `cases/` 中相似事故，并回看上游 postmortem / Agent Note / source symbol。
+4. 优先读取 Session log、request/header、composed config、structured tool/error code、process/browser state 等权威运行证据。
+5. 给出按概率排序的假设和最短排除路径；没有证据时不得直接建议改 Core。
+6. 根因确认后指出正确 extension point 和最小修复。
+7. 必须说明 regression evidence：什么测试或真实入口能够失败于该机制。
+8. 输出 version scope、evidence level 和 confidence；未确认的结论明确标记。
+
 ## 研究写作要求
 
 每个专项研究至少回答：
 
 - 它解决什么真实问题？
+- 用户实际看到的 symptom 是什么？
 - DSH 当前实际怎么实现？
 - 状态和事实由谁拥有？
 - 模型可见信息来自哪里？
 - 哪些内容 durable，哪些仅 live？
 - 失败与取消如何表现？
 - 哪个扩展点是正确接入位置？
+- 什么运行证据能够确认或排除根因？
+- 哪种 regression 真正能证明机制，而不是只让测试变绿？
 - 哪些改法属于反模式？
 - 对生产智能体有什么迁移价值？
 - 什么情况下不要使用该模式？
@@ -53,6 +69,7 @@
 
 - 不把外部项目的结论直接写成 DSH 事实。
 - 不为了“完整”复制官方文档。
+- 不把 README、架构原则或 unit coverage 当成运行时正确性的充分证据。
 - 不建立与 DSH 原生机制平行的第二套状态机、Session、Tool Registry 或 Agent Runtime，除非源码证据证明原生能力不能满足需求。
 - 不因一次失败增加 checker、gate、reviewer 或额外 Agent。
 - 不删除证据版本信息。
