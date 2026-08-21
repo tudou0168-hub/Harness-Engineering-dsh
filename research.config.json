@@ -1,0 +1,21 @@
+{
+  "project": "Harness Engineering for DeepSeek Harness",
+  "schemaVersion": 1,
+  "baseline": {
+    "date": "2026-08-21",
+    "repository": "tudou0168-hub/deepseek-harness",
+    "upstream": "deepseek-ai/deepseek-harness",
+    "version": "0.1.0-rc.8",
+    "commit": "141eb6fef83422698aef7a981029e843e8161534"
+  },
+  "comparativeReferences": [
+    "ZhangHanDong/harness-engineering-from-cc-to-ai-coding"
+  ],
+  "evidenceLevels": {
+    "E1": "version-locked source, release artifact, source map, reproducible experiment",
+    "E2": "current DSH architecture/subsystem/package docs and implemented Agent Notes",
+    "E3": "commit, PR, postmortem and historical evidence",
+    "E4": "external comparative research",
+    "E5": "research inference"
+  }
+}

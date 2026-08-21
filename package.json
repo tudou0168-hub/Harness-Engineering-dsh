@@ -1,0 +1,12 @@
+{
+  "name": "harness-engineering-dsh-research",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "study:new": "node scripts/new-study.mjs",
+    "verify": "node scripts/verify-research.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
