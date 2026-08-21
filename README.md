@@ -1,0 +1,2 @@
+# Harness-Engineering-dsh
+这是一本关于Harness Engineering的中文技术书。它以deepseek-harness 的公开发布包与源图还原结果为分析材料，并不试图复刻官方产品文档，而是从真实工程实现中提炼AI编码Agent的架构模式、上下文策略、权限体系和生产实践。
